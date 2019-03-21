@@ -31,9 +31,8 @@ public class PhotosActivity extends AppCompatActivity {
     private PhotoAdapter photoAdapter;
     private List<ImageAndText> imageAndTextList = new ArrayList<ImageAndText>();
     private ImageAndTextListAdapter imageAndTextListAdapter;
-    private File[] images;
-    private HashMap image_record_map;
-
+    private File[] questions, images;
+    private HashMap question_record_s, image_record_s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,10 @@ public class PhotosActivity extends AppCompatActivity {
         //photoList = PublicVariables.getmPhotos();
         //this.set_photos_list(getApplicationContext());
         Intent intent =getIntent();
-        images = (File[])intent.getSerializableExtra("image");
-        image_record_map = (HashMap) intent.getSerializableExtra("map_image");
+        images = (File[]) intent.getSerializableExtra("image");
+        questions = (File[])intent.getSerializableExtra("question");
+        question_record_s= (HashMap) intent.getSerializableExtra("map_question");
+        image_record_s = (HashMap) intent.getSerializableExtra("map_image");
         set_views();
         photoAdapter = new PhotoAdapter(this);
         photoAdapter.set_resource_images(images, getApplicationContext());
@@ -58,7 +59,7 @@ public class PhotosActivity extends AppCompatActivity {
         iv_camera = (ImageView)findViewById(R.id.iv_camera);
         iv_photo = (ImageView)findViewById(R.id.iv_photo);
         iv_question = (ImageView)findViewById(R.id.iv_question);
-        iv_setting = (ImageView)findViewById(R.id.iv_setting);
+        //iv_setting = (ImageView)findViewById(R.id.iv_setting);
         gridView=(GridView)findViewById(R.id.gridview);
     }
 
@@ -75,6 +76,10 @@ public class PhotosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(), PhotosActivity.class);
+                intent.putExtra("image", images);
+                intent.putExtra("map_image", (Serializable) image_record_s);
+                intent.putExtra("question", questions);
+                intent.putExtra("map_question", (Serializable) question_record_s);
                 startActivity(intent);
                 finish();
             }
@@ -83,18 +88,22 @@ public class PhotosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(), QuestionsActivity.class);
+                intent.putExtra("image", images);
+                intent.putExtra("map_image", (Serializable) image_record_s);
+                intent.putExtra("question", questions);
+                intent.putExtra("map_question", (Serializable) question_record_s);
                 startActivity(intent);
                 finish();
             }
         });
-        iv_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), SettingActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        iv_setting.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(getApplicationContext(), SettingActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
@@ -102,7 +111,7 @@ public class PhotosActivity extends AppCompatActivity {
 //                ImageAndText p=imageAndTextList.get(position);
 //                intent.putExtra("imageAndText",p);
                 intent.putExtra("photo",images[position]);
-                ArrayList<File> record = (ArrayList<File>) image_record_map.get(images[position]);
+                ArrayList<File> record = (ArrayList<File>) image_record_s.get(images[position]);
                 if(record != null)intent.putExtra("record", record);
                 startActivity(intent);
             }

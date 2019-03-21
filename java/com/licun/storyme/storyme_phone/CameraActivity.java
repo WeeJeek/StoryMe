@@ -79,11 +79,11 @@ public class CameraActivity extends Activity {
 
     private void initialize(){
         requestPermission();
-        image_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        image_path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/licun");
         create_path(image_path);
-        question_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+        question_path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toString() + "/licun");
         create_path(question_path);
-        record_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+        record_path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString() + "/licun");
         create_path(record_path);
         refresh();
     }
@@ -113,7 +113,7 @@ public class CameraActivity extends Activity {
         iv_camera = (ImageView) findViewById(R.id.iv_camera);
         iv_photo = (ImageView) findViewById(R.id.iv_photo);
         iv_question = (ImageView) findViewById(R.id.iv_question);
-        iv_setting = (ImageView) findViewById(R.id.iv_setting);
+        //iv_setting = (ImageView) findViewById(R.id.iv_setting);
         iv_picture = (ImageView) findViewById(R.id.iv_picture);
     }
 
@@ -140,7 +140,7 @@ public class CameraActivity extends Activity {
                 intent.putExtra("image", images);
                 intent.putExtra("map_image", (Serializable) image_record_s);
                 intent.putExtra("question", questions);
-                intent.putExtra("map_questions", (Serializable) question_record_s);
+                intent.putExtra("map_question", (Serializable) question_record_s);
                 startActivityForResult(intent, 0);
                 finish();
             }
@@ -152,19 +152,19 @@ public class CameraActivity extends Activity {
                 intent.putExtra("image", images);
                 intent.putExtra("map_image", (Serializable) image_record_s);
                 intent.putExtra("question", questions);
-                intent.putExtra("map_questions", (Serializable) question_record_s);
+                intent.putExtra("map_question", (Serializable) question_record_s);
                 startActivity(intent);
                 finish();
             }
         });
-        iv_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        iv_setting.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
     }
 
     @Override

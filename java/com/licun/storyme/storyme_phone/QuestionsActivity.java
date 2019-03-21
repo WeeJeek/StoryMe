@@ -54,16 +54,24 @@ public class QuestionsActivity extends AppCompatActivity {
         set_on_clicks();
 
        // questionList = PublicVariables.getmQuestions();
-        this.que_adapter = new QuestionAdapter(QuestionsActivity.this, R.layout.item_question, questions);
-        listView.setAdapter(que_adapter);
-
+        try {
+            this.que_adapter = new QuestionAdapter(QuestionsActivity.this, R.layout.item_question, questions);
+            listView.setAdapter(que_adapter);
+        }catch (NullPointerException e){
+        }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id)
             {
                 Intent intent=new Intent(QuestionsActivity.this,QuestionContentActivity.class);
+                ArrayList<File> record = (ArrayList<File>) question_record_s.get(questions[position]);
+                if(record != null){
+                intent.putExtra("record", record);
                 intent.putExtra("question",questions[position]);
-                startActivity(intent);
+                startActivity(intent);}
+                else{
+                    //Toast.makeText(getApplicationContext(), "No corresponding record!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -72,7 +80,7 @@ public class QuestionsActivity extends AppCompatActivity {
         iv_camera = (ImageView)findViewById(R.id.iv_camera);
         iv_photo = (ImageView)findViewById(R.id.iv_photo);
         iv_question = (ImageView)findViewById(R.id.iv_question);
-        iv_setting = (ImageView)findViewById(R.id.iv_setting);
+        //iv_setting = (ImageView)findViewById(R.id.iv_setting);
         iv_add = (ImageView)findViewById(R.id.iv_add);
         listView = (ListView) findViewById(R.id.list_view);
     }
@@ -93,7 +101,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 intent.putExtra("image", images);
                 intent.putExtra("map_image", (Serializable) image_record_s);
                 intent.putExtra("question", questions);
-                intent.putExtra("map_questions", (Serializable) question_record_s);
+                intent.putExtra("map_question", (Serializable) question_record_s);
                 startActivity(intent);
                 finish();
             }
@@ -102,18 +110,22 @@ public class QuestionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(), QuestionsActivity.class);
+                intent.putExtra("image", images);
+                intent.putExtra("map_image", (Serializable) image_record_s);
+                intent.putExtra("question", questions);
+                intent.putExtra("map_question", (Serializable) question_record_s);
                 startActivity(intent);
                 finish();
             }
         });
-        iv_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), SettingActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        iv_setting.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(getApplicationContext(), SettingActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
         iv_add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

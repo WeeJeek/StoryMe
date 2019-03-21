@@ -75,6 +75,7 @@ public class Toolbox {
             ArrayList<File> values = new ArrayList<File>();
             String key_realname = key.getName();
             key_realname = key_realname.replace(".jpg", "");
+            key_realname = key_realname.replace(".txt", "");
             for (File record : records) {
                 String record_name = record.getName();
                 if (record_name.contains(key_realname)) {
@@ -85,6 +86,7 @@ public class Toolbox {
         }
         return map;
     }
+
 
 
 }

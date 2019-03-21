@@ -20,7 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class QuestionContentActivity extends AppCompatActivity {
@@ -28,7 +30,7 @@ public class QuestionContentActivity extends AppCompatActivity {
     private Intent intent;
     private String TAG="QuestionContentActivity";
     private TextView tvQuesion;
-    private Question question;
+    //private Question question;
     private ListView lvRecord;
     private ImageView imback;
     //    private List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
@@ -39,14 +41,23 @@ public class QuestionContentActivity extends AppCompatActivity {
     //private RecordAdapter adapters = new RecordAdapter(this);
     private ArrayList<Record> mMusicBeanList = new ArrayList<Record>();// 装音乐列表的数组
     private ArrayList<File> mFileList = new ArrayList<File>();
-    private File musicfile = new File(Environment.getExternalStorageDirectory()+"/PhotoM");;
+    //private File musicfile = new File(Environment.getExternalStorageDirectory()+"/PhotoM");;
     private static MediaPlayer mediaPlayer = new MediaPlayer();
     private ImageView imBack;
+    private File question;
+    private ArrayList<File> records;
+    private boolean playing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_content);
+        Intent intent = getIntent();
+        question = (File)intent.getSerializableExtra("question");
+        records = (ArrayList<File>) intent.getSerializableExtra("record");
+        lvRecord =  (ListView) findViewById(R.id.lv_record);
+        RecordAdapter rec = new RecordAdapter(QuestionContentActivity.this, R.layout.item_record, records);
+        lvRecord.setAdapter(rec);
         set_views();
         set_on_clicks();
     }
@@ -59,9 +70,14 @@ public class QuestionContentActivity extends AppCompatActivity {
         imBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), QuestionsActivity.class);
-                startActivity(intent);
                 finish();
+            }
+        });
+
+        lvRecord.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                if(!playing){initMediaPlayer(records.get(position));}
+                else{stop();}
             }
         });
     }
@@ -94,12 +110,17 @@ public class QuestionContentActivity extends AppCompatActivity {
             //mediaPlayer.setLooping(true);//设置为循环播放
             mediaPlayer.prepare();//初始化播放器MediaPlayer
             mediaPlayer.start();
+            playing = true;
         } catch (Exception e) {
             Log.i(TAG,e.getMessage());
             e.printStackTrace();
         }
     }
 
+    private void stop(){
+        mediaPlayer.stop();
+        playing = false;
+    }
     /*
      *单击list
      */
