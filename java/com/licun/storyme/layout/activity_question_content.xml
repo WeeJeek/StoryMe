@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	tools:context="com.ddd.photophone.MainActivity"
+    android:background="@color/background">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical">
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Question"
+			android:id="@+id/tv_title"
+			android:layout_alignParentTop="true"
+			android:textSize="20sp"
+			android:height="42sp"
+			android:gravity="center"
+			android:background="@color/titletv"/>
+
+		<ImageView
+			android:id="@+id/imback"
+			android:layout_width="35dp"
+			android:layout_height="31dp"
+			android:layout_centerVertical="true"
+			android:background="@mipmap/back"></ImageView>
+
+	</RelativeLayout>
+
+    
+
+   <LinearLayout 
+		android:layout_marginTop="43sp"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+	    android:orientation="vertical">
+	    <RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:height="42sp"
+			android:background="@color/snow">
+	       <View
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:layout_alignParentTop="true"
+		        android:background="@color/gray1dp" />
+
+	        <TextView
+				android:id="@+id/tv_question"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:gravity="center_vertical"
+	            android:text=" "
+	            android:textSize="16sp" />
+
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:background="@color/gray1dp" />
+	    </RelativeLayout>
+	    <RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginTop="10px"
+			android:gravity="center"
+			android:height="42sp"
+			android:background="@color/snow">
+	       <View
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:layout_alignParentTop="true"
+		        android:background="@color/gray1dp" />
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginBottom="56sp"
+				android:gravity="center_horizontal"
+				android:orientation="vertical">
+
+
+				<ListView
+					android:id="@+id/lv_record"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				</ListView>
+			</LinearLayout>
+	    </RelativeLayout>
+
+	</LinearLayout>    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/tabbar"
+        android:background="@color/gray1dp" />
+
+
+</RelativeLayout>

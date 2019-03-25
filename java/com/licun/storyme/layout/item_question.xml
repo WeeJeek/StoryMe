@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50sp">
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="50sp" />
+
+    <ImageView
+        android:id="@+id/fruit_image"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_alignParentRight="true"
+        android:background="@mipmap/play"/>
+</RelativeLayout>

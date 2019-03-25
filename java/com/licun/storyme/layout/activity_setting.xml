@@ -1,0 +1,223 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	tools:context="com.ddd.photophone.MainActivity"
+    android:background="@color/background">
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Setting"
+            android:id="@+id/tv_title"
+            android:layout_alignParentTop="true"
+            android:textSize="20sp"
+            android:height="42sp"
+            android:gravity="center"            
+            android:background="@color/titletv"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_title"
+        android:background="@color/gray1dp" />
+    
+
+   <LinearLayout 
+		android:layout_below="@+id/tv_title"
+		android:layout_marginTop="10dp"
+		android:layout_width="match_parent"
+		android:layout_height="300px"
+	    android:orientation="vertical">
+	    <RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:height="42sp"
+			android:background="@color/snow">
+	       <View
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:layout_alignParentTop="true"
+		        android:background="@color/gray1dp" />
+
+	        <Button
+				android:id="@+id/btn_logout"
+	            android:layout_width="wrap_content"
+	            android:layout_height="38sp"
+	            android:layout_marginLeft="10dp"
+	            android:gravity="center_vertical"
+	            android:text="Logout"
+	            android:textSize="16sp" />
+
+	       <TextView
+	           android:layout_width="20sp"
+	           android:layout_height="42sp"
+	           android:layout_marginRight="50dp"
+	           android:layout_alignParentRight="true"
+	           android:ems="10"
+	           android:text=" "
+	           android:gravity="center_vertical"
+	           />
+
+	         <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentRight="true"
+	            android:layout_centerVertical="true"
+	            android:gravity="center"
+	            android:text=""
+	            android:textSize="16sp" />
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:background="@color/gray1dp" />
+	    </RelativeLayout>
+	    <RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10px"
+			android:gravity="center"
+			android:height="42sp"
+			android:background="@color/snow">
+	       <View
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:layout_alignParentTop="true"
+		        android:background="@color/gray1dp" />
+
+	        <TextView
+	            android:id="@+id/tv_all_items2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="38sp"
+	            android:layout_marginLeft="10dp"
+	            android:gravity="center_vertical"
+	            android:text="About"
+	            android:textSize="16sp" />
+
+	       <TextView
+	           android:layout_width="wrap_content"
+	           android:layout_height="42sp"
+	           android:layout_marginLeft="150dp"
+	           android:ems="10"
+	           android:gravity="center_vertical"
+	           android:textColor="@color/gray" />
+
+	         <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentRight="true"
+	            android:layout_centerVertical="true"
+	            android:gravity="center"
+	            android:text=""
+	            android:textSize="16sp" />
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:background="@color/gray1dp" />
+	    </RelativeLayout> 
+		
+	</LinearLayout>    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/tabbar"
+        android:background="@color/gray1dp" />
+	<!-- Tabbar背景色 -->
+	<LinearLayout
+		android:id="@+id/tabbar"
+		android:layout_width="match_parent"
+		android:layout_height="55dp"
+		android:layout_alignParentBottom="true"
+		android:background="@color/tabbar">
+
+		<!-- 睿库 -->
+		<RelativeLayout
+			android:id="@+id/ruiku_layout"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1">
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:orientation="vertical">
+				<ImageView
+					android:id="@+id/iv_camera"
+					android:layout_width="45dp"
+					android:layout_height="45dp"
+					android:layout_marginTop="5dip"
+					android:layout_gravity="center_horizontal"
+					android:src="@mipmap/home"/>
+
+			</LinearLayout>
+		</RelativeLayout>
+
+		<!-- 预约 -->
+		<RelativeLayout
+			android:id="@+id/yuyue_layout"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1">
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:orientation="vertical">
+				<ImageView
+					android:id="@+id/iv_photo"
+					android:layout_width="45dp"
+					android:layout_height="45dp"
+					android:layout_marginTop="5dip"
+					android:layout_gravity="center_horizontal"
+					android:src="@mipmap/star"/>
+
+			</LinearLayout>
+		</RelativeLayout>
+
+		<!-- 消息 -->
+		<RelativeLayout
+			android:id="@+id/xiaoxi_layout"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1">
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:orientation="vertical">
+				<ImageView
+					android:id="@+id/iv_question"
+					android:layout_width="45dp"
+					android:layout_height="45dp"
+					android:layout_marginTop="5dip"
+					android:layout_gravity="center_horizontal"
+					android:src="@mipmap/community"/>
+
+			</LinearLayout>
+		</RelativeLayout>
+
+		<!-- 我的 -->
+		<RelativeLayout
+			android:id="@+id/wode_layout"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1">
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:orientation="vertical">
+
+				<ImageView
+					android:id="@+id/iv_setting"
+					android:layout_width="45dp"
+					android:layout_height="45dp"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="5dip"
+					android:src="@mipmap/user_p" />
+
+			</LinearLayout>
+		</RelativeLayout>
+	</LinearLayout>
+
+</RelativeLayout>

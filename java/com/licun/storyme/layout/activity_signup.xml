@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:screenOrientation="landscape"
+    tools:context=".SignupActivity">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/tv_title"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp"
+        android:height="42sp"
+        android:gravity="center"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_title"/>
+
+    <!-- Login progress -->
+
+
+    <LinearLayout
+        android:id="@+id/email_signup_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20px"
+        android:orientation="vertical">
+        <EditText
+            android:layout_marginTop="50px"
+            android:id="@+id/et_signup_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:maxLines="1"
+            android:singleLine="true" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tv_title" />
+
+        <EditText
+            android:layout_marginTop="50px"
+            android:id="@+id/et_signup_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/bt_signup"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginTop="16dp"
+            android:text="Signup"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>

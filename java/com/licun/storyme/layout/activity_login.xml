@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:screenOrientation="landscape"
+    tools:context=".LoginActivity">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/tv_title"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp"
+        android:height="42sp"
+        android:gravity="center"
+        android:background="#D3D3D3"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_title"
+        android:background="#D3D3D3" />
+
+    <!-- Login progress -->
+
+
+    <LinearLayout
+        android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20px"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50px"
+            android:hint="Username"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50px"
+            android:hint="Password"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tv_title"
+            android:background="#D3D3D3" />
+
+        <TextView
+            android:id="@+id/tv_signup"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="No account? Register one!" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginTop="16dp"
+            android:text="Login"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>
